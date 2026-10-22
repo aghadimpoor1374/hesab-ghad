@@ -1,0 +1,13 @@
+# Legacy Windows 8 build; isolated from current desktop requirements.
+reportlab==4.2.5
+arabic-reshaper==3.0.0
+python-bidi==0.4.2
+six==1.17.0
+cryptography==42.0.8
+cffi==1.17.1
+pycparser==2.22
+pillow==10.4.0
+chardet==5.2.0
+pyinstaller==5.13.2
+pyinstaller-hooks-contrib==2023.8
+setuptools==70.3.0

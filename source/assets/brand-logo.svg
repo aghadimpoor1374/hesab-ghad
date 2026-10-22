@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+<defs>
+<radialGradient id="bg" cx=".4" cy=".3" r=".85"><stop stop-color="#214f4a"/><stop offset=".65" stop-color="#0b292a"/><stop offset="1" stop-color="#05181d"/></radialGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0bd"/><stop offset=".32" stop-color="#e7bf73"/><stop offset=".6" stop-color="#b57b30"/><stop offset=".83" stop-color="#f3d696"/><stop offset="1" stop-color="#c59243"/></linearGradient>
+<linearGradient id="bead" x2="1" y2=".75"><stop stop-color="#fff5d1"/><stop offset=".38" stop-color="#edca83"/><stop offset="1" stop-color="#bc8439"/></linearGradient>
+<linearGradient id="dark" x2="1" y2="1"><stop stop-color="#194640"/><stop offset="1" stop-color="#082c2b"/></linearGradient>
+<radialGradient id="coin" cx=".3" cy=".25"><stop stop-color="#ffedb2"/><stop offset=".7" stop-color="#e3b65f"/><stop offset="1" stop-color="#c18b38"/></radialGradient>
+<filter id="s" x="-.4" y="-.4" width="1.8" height="1.8"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#001111" flood-opacity=".5"/></filter>
+<filter id="soft"><feGaussianBlur stdDeviation="22"/></filter>
+<g id="b"><rect width="58" height="91" rx="29" fill="url(#bead)"/><path d="M13 28Q14 12 29 12" fill="none" stroke="#fff7dc" stroke-width="4" stroke-linecap="round" opacity=".65"/></g>
+</defs>
+<rect width="1200" height="1200" rx="252" fill="url(#bg)"/>
+<ellipse cx="617" cy="936" rx="324" ry="30" fill="#000" opacity=".26" filter="url(#soft)"/>
+<g transform="translate(0 -16)" filter="url(#s)">
+<rect x="228" y="272" width="624" height="604" rx="67" fill="url(#gold)"/>
+<rect x="254" y="299" width="572" height="550" rx="44" fill="url(#dark)"/>
+<path d="M270 317Q270 310 281 310H798" fill="none" stroke="#fff0c0" stroke-opacity=".3" stroke-width="3"/>
+<g stroke="#c7a264" stroke-width="9" stroke-linecap="round"><path d="M267 410H813M267 565H813M267 720H813"/></g>
+<use href="#b" x="306" y="364"/><use href="#b" x="372" y="364"/><use href="#b" x="667" y="364"/><use href="#b" x="733" y="364"/>
+<use href="#b" x="306" y="519"/><use href="#b" x="601" y="519"/><use href="#b" x="667" y="519"/><use href="#b" x="733" y="519"/>
+<use href="#b" x="306" y="674"/><use href="#b" x="372" y="674"/><use href="#b" x="438" y="674"/>
+</g>
+<g filter="url(#s)">
+<circle cx="819" cy="798" r="175" fill="url(#gold)"/>
+<circle cx="819" cy="798" r="155" fill="url(#coin)" stroke="#fff0b8" stroke-width="3"/>
+<circle cx="819" cy="798" r="137" fill="none" stroke="#a97329" stroke-opacity=".45" stroke-width="3"/>
+<path d="M819 705L884 798L819 891L754 798Z" fill="#9b6828" opacity=".8"/>
+<path d="M819 719L873 798L819 877L765 798Z" fill="url(#gold)"/>
+<path d="M819 719V877M765 798H873" stroke="#fff0b7" stroke-opacity=".65" stroke-width="3"/>
+<path d="M704 739A135 135 0 0 1 835 663" fill="none" stroke="#fff5d5" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+</g>
+</svg>
