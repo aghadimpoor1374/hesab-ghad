@@ -1,0 +1,46 @@
+name: Build Windows Installer
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64, x86]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.8.10'
+          architecture: ${{ matrix.arch }}
+      - name: Install pinned legacy-compatible dependencies
+        run: python -m pip install -r source/requirements-win8.txt
+      - name: Test accounting, navigation, updates and licenses
+        run: |
+          python -m unittest discover -s source -p test_gold_special.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s source -p test_special_navigation.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest test_desktop_update test_offline_license -v
+      - name: Build desktop executable
+        working-directory: source
+        run: python -m PyInstaller --noconfirm --clean --windowed --onedir --name HesabGhadim --icon assets/app-icon.ico --collect-all reportlab --collect-all arabic_reshaper --collect-all bidi --add-data "assets;assets" --add-data "license-public.key;." --add-data "update-public.key;." windows_entry.py
+      - name: Install pinned Inno Setup (legacy Windows support)
+        shell: pwsh
+        run: |
+          choco install innosetup --version=6.2.2 --yes --no-progress --allow-downgrade --force
+          if ($LASTEXITCODE -ne 0) { throw 'Inno Setup 6.2.2 installation failed' }
+      - name: Build Setup EXE
+        shell: pwsh
+        run: |
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" /DTargetArch=${{ matrix.arch }} setup.iss
+          if ($LASTEXITCODE -ne 0) { throw 'Installer compilation failed' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HesabGhadim-Win8plus-${{ matrix.arch }}
+          path: output/HesabGhadim-Setup-Win8plus-${{ matrix.arch }}.exe
+          if-no-files-found: error
+          retention-days: 14
